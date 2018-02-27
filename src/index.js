@@ -2,7 +2,11 @@ module.exports = function makeExchange(currency) {
     
     var ogregood = {};
     
-    
+    if (currency <= 0) {
+    	return {};
+    } else if (currency >= 10000) {
+    	return {error: "You are rich, my friend! We don't have so much coins for exchange"};
+    };
 
 var H =  Math.floor(currency/50);
       if (H) {
@@ -32,12 +36,5 @@ var P =	 Math.floor(currency/1);
 	 currency -= P*1;
 	 ogregood.P = P;	 
 }
-if (currency <= 0) {
-    return {};
-} else if (currency >= 10000) {
-    return {error: "You are rich, my friend! We don't have so much coins for exchange"};
-};
-
-
 return ogregood; 
 }
